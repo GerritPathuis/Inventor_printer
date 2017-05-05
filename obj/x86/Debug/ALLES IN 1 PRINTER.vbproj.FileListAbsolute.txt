@@ -85,3 +85,20 @@ C:\Repos\Alles in 1 Printer\obj\x86\Debug\ALLES IN 1 PRINTER.application
 C:\Repos\Alles in 1 Printer\obj\x86\Debug\ALLES IN 1 PRINTER.exe
 C:\Repos\Alles in 1 Printer\obj\x86\Debug\ALLES IN 1 PRINTER.xml
 C:\Repos\Alles in 1 Printer\obj\x86\Debug\ALLES IN 1 PRINTER.pdb
+C:\Repos\Alles in 1 Printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.exe.manifest
+C:\Repos\Alles in 1 Printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.application
+C:\Repos\Alles in 1 Printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.exe
+C:\Repos\Alles in 1 Printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.pdb
+C:\Repos\Alles in 1 Printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.xml
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.vbprojResolveAssemblyReference.cache
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\Interop.Inventor.dll
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\Interop.VBA.dll
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.vbproj.ResolveComReference.cache
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES_IN_1_PRINTER.Form1.resources
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES_IN_1_PRINTER.Resources.resources
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.vbproj.GenerateResource.Cache
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.exe.manifest
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.application
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.exe
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.xml
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.pdb

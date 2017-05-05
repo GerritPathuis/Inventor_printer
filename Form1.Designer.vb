@@ -48,6 +48,8 @@ Partial Class Form1
         Me.RadioButton_Xerox_Boven = New System.Windows.Forms.RadioButton()
         Me.RadioButton_HP_5100 = New System.Windows.Forms.RadioButton()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -255,7 +257,7 @@ Partial Class Form1
         Me.RadioButton_default.Size = New System.Drawing.Size(59, 17)
         Me.RadioButton_default.TabIndex = 2
         Me.RadioButton_default.Text = "Default"
-        Me.ToolTip1.SetToolTip(Me.RadioButton_default, "Print hetzelfde als je laatste print sinds Inventor voor het laatst is opgestart." & _
+        Me.ToolTip1.SetToolTip(Me.RadioButton_default, "Print hetzelfde als je laatste print sinds Inventor voor het laatst is opgestart." &
         " " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Maar print (nog) alleen op A3.")
         Me.RadioButton_default.UseVisualStyleBackColor = True
         '
@@ -288,11 +290,25 @@ Partial Class Form1
         Me.ToolTip1.InitialDelay = 500
         Me.ToolTip1.ReshowDelay = 100
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(21, 440)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(131, 23)
+        Me.Button3.TabIndex = 10
+        Me.Button3.Text = "Select Printer"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(954, 624)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox_Printer)
         Me.Controls.Add(Me.GroupBox_Stempeltype)
@@ -340,5 +356,6 @@ Partial Class Form1
     Friend WithEvents RadioButton_default As System.Windows.Forms.RadioButton
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents CheckBox_Blanco As System.Windows.Forms.CheckBox
-
+    Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents Button3 As Button
 End Class
