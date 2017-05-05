@@ -23,7 +23,6 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -47,7 +46,6 @@ Partial Class Form1
         Me.RadioButton_default = New System.Windows.Forms.RadioButton()
         Me.RadioButton_Xerox_Boven = New System.Windows.Forms.RadioButton()
         Me.RadioButton_HP_5100 = New System.Windows.Forms.RadioButton()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
@@ -64,7 +62,6 @@ Partial Class Form1
         Me.Button1.Size = New System.Drawing.Size(144, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Selecteer doelmap"
-        Me.ToolTip1.SetToolTip(Me.Button1, "Defineer de bestemming voor PDF, DXF & DWG printen")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1
@@ -75,7 +72,6 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(96, 13)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Versie 1 Release 8"
-        Me.ToolTip1.SetToolTip(Me.Label1, resources.GetString("Label1.ToolTip"))
         '
         'TextBox1DOELMAP
         '
@@ -83,7 +79,6 @@ Partial Class Form1
         Me.TextBox1DOELMAP.Name = "TextBox1DOELMAP"
         Me.TextBox1DOELMAP.Size = New System.Drawing.Size(706, 20)
         Me.TextBox1DOELMAP.TabIndex = 2
-        Me.ToolTip1.SetToolTip(Me.TextBox1DOELMAP, "Deze balk geeft de bestemming aan voor PDF, DXF & DWG printen")
         '
         'Timer1
         '
@@ -160,7 +155,6 @@ Partial Class Form1
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(702, 524)
         Me.ListBox1.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.ListBox1, "Sleep IDW's hierheen om een printlijst te maken.")
         '
         'GroupBox3
         '
@@ -171,11 +165,10 @@ Partial Class Form1
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Printlijst"
-        Me.ToolTip1.SetToolTip(Me.GroupBox3, "Sleep IDW's hierheen om een printlijst te maken.")
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(5, 589)
+        Me.Button2.Location = New System.Drawing.Point(3, 567)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(149, 23)
         Me.Button2.TabIndex = 7
@@ -257,8 +250,6 @@ Partial Class Form1
         Me.RadioButton_default.Size = New System.Drawing.Size(59, 17)
         Me.RadioButton_default.TabIndex = 2
         Me.RadioButton_default.Text = "Default"
-        Me.ToolTip1.SetToolTip(Me.RadioButton_default, "Print hetzelfde als je laatste print sinds Inventor voor het laatst is opgestart." &
-        " " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Maar print (nog) alleen op A3.")
         Me.RadioButton_default.UseVisualStyleBackColor = True
         '
         'RadioButton_Xerox_Boven
@@ -271,7 +262,6 @@ Partial Class Form1
         Me.RadioButton_Xerox_Boven.TabIndex = 1
         Me.RadioButton_Xerox_Boven.TabStop = True
         Me.RadioButton_Xerox_Boven.Text = "Xerox (Boven)"
-        Me.ToolTip1.SetToolTip(Me.RadioButton_Xerox_Boven, resources.GetString("RadioButton_Xerox_Boven.ToolTip"))
         Me.RadioButton_Xerox_Boven.UseVisualStyleBackColor = True
         '
         'RadioButton_HP_5100
@@ -283,12 +273,6 @@ Partial Class Form1
         Me.RadioButton_HP_5100.TabIndex = 0
         Me.RadioButton_HP_5100.Text = "HP 5100 (Engineering)"
         Me.RadioButton_HP_5100.UseVisualStyleBackColor = True
-        '
-        'ToolTip1
-        '
-        Me.ToolTip1.AutoPopDelay = 25000
-        Me.ToolTip1.InitialDelay = 500
-        Me.ToolTip1.ReshowDelay = 100
         '
         'PrintDialog1
         '
@@ -354,7 +338,6 @@ Partial Class Form1
     Friend WithEvents RadioButton_Xerox_Boven As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton_HP_5100 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton_default As System.Windows.Forms.RadioButton
-    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents CheckBox_Blanco As System.Windows.Forms.CheckBox
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents Button3 As Button

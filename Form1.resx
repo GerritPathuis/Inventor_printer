@@ -117,34 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
   <metadata name="FolderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
-  <data name="Label1.ToolTip" xml:space="preserve">
-    <value>Release 3 Blanco stempels toegevoegt
-Release 4 Peter H's spook tekeningen nu ook gestempelt
-Release 5 Jan's stempel wordt nu ook goed uitgelijnd
-Release 6 Stempels nu gezoorteert
-Release 7 Enige presets geupdate
-Release 8 Blanco stempelen is weer mogelijk</value>
-  </data>
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>188, 17</value>
   </metadata>
-  <data name="RadioButton_Xerox_Boven.ToolTip" xml:space="preserve">
-    <value>Om te zorgen dat deze printer perforeert pas dan nu de instellingen in het menu printers aan.
-Start &gt; apparaten en printers &gt;  Xerox WorkCentre 5632 PS op vtkfille. 
-Rechtermuisknop &gt;voorkeursinstellingen.
-Perforeeren aanzetten.
-
-Vergeet niet na het printen de instellingen weer terug te zetten!</value>
-  </data>
   <metadata name="PrintDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>376, 17</value>
   </metadata>

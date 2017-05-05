@@ -61,6 +61,9 @@ Public Class Form1
 
 #End Region
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
+        Dim Aantal_tekeningen As Integer = ListBox1.Items.Count
+
+        MessageBox.Show(Aantal_tekeningen.ToString)
         If ListBox1.Items.Count = 0 Then
             MsgBox("Er staan geen tekeningen in de lijst", MsgBoxStyle.OkOnly, "ALLES_IN_1_PRINTER")
             Exit Sub
@@ -84,7 +87,7 @@ Public Class Form1
             End If
         End If
 
-        Dim Aantal_tekeningen As Integer = ListBox1.Items.Count
+
         Dim i As Integer
         Dim endAt = ListBox1.Items.Count - 1
 
@@ -98,7 +101,7 @@ Public Class Form1
                 i = i - 1
                 Aantal_tekeningen = Aantal_tekeningen - 1
             End If
-            ListBox1.SelectedIndex = Nothing
+            'ListBox1.SelectedIndex = Nothing
             If i + 1 = Aantal_tekeningen Then
                 Exit For
             End If
@@ -107,164 +110,171 @@ Public Class Form1
         Timer1.Start()
     End Sub
     Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        Dim myfile As String
+        Dim fi As FileInfo
+        Dim dir As DirectoryInfo
+        Dim welkemap As String
+        Dim digitaalprinten As Boolean = True  'digitaal printen afhankelijk van een if statment maken
+        Dim i, i2, i3, i4, i5, i6, Aantal_tekeningen, endAt As Integer
+
         Timer1.Enabled = False
-        ListBox1.SelectedIndex = 0
+
+        'ListBox1.SelectedIndex = 1
         ''Toepassen --> coppy naar c:\temp dan openen
+        ' naar 3 mappen
+        ' dir = New IO.DirectoryInfo("C:\Temp")
+        ' myfile = CType(ListBox1.SelectedItem, String)
+        'fi = New FileInfo(myfile)
+        ' welkemap = "C:\Temp"
 
-        ''''210 naar 3 mappen
-        Dim di As New IO.DirectoryInfo("C:\Temp")
-        Dim myfile As String = CType(ListBox1.SelectedItem, String)
-        Dim fi As FileInfo = New FileInfo(myfile)
-        Dim welkemap As String = "C:\Temp"
-        Dim digitaalprinten As Boolean = True
-        '' digitaal printen afhankelijk van een if statment maken
 
-        Dim Aantal_tekeningen As Integer = ListBox1.Items.Count
+        Aantal_tekeningen = ListBox1.Items.Count
+        MessageBox.Show(Aantal_tekeningen.ToString)
+        endAt = ListBox1.Items.Count - 1
 
-        Dim i As Integer
-        Dim endAt = ListBox1.Items.Count - 1
+        'MessageBox.Show(ListBox1.SelectedIndex = 1)
+        'MessageBox.Show(ListBox1.SelectedIndex = 0)
 
         For i = 0 To Aantal_tekeningen
-            ListBox1.SelectedIndex = i
-            myfile = CType(ListBox1.SelectedItem, String)
-            fi = New FileInfo(myfile)
+            MessageBox.Show("i=" & i.ToString)
 
+            'ListBox1.SelectedIndex = i
+            'myfile = CType(ListBox1.SelectedItem, String)
+            'fi = New FileInfo(myfile)
 
-            If CheckBox_Assemblage.Checked = True Then
-                welkemap = "C:\Temp\Assemblage"
-                'fi.IsReadOnly = False
-                If (Not System.IO.Directory.Exists(welkemap)) Then
-                    System.IO.Directory.CreateDirectory(welkemap)
-                End If
-                fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
-            End If
+            'If CheckBox_Assemblage.Checked = True Then
+            '    welkemap = "C:\Temp\Assemblage"
+            '    'fi.IsReadOnly = False
+            '    If (Not System.IO.Directory.Exists(welkemap)) Then
+            '        System.IO.Directory.CreateDirectory(welkemap)
+            '    End If
+            '    fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
+            'End If
 
-            If CheckBox_Bedrijfsbureau.Checked = True Then
-                welkemap = "C:\Temp\Bedrijfsbureau"
-                'fi.IsReadOnly = False
-                If (Not System.IO.Directory.Exists(welkemap)) Then
-                    System.IO.Directory.CreateDirectory(welkemap)
-                End If
-                fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
-            End If
+            'If CheckBox_Bedrijfsbureau.Checked = True Then
+            '    welkemap = "C:\Temp\Bedrijfsbureau"
+            '    'fi.IsReadOnly = False
+            '    If (Not System.IO.Directory.Exists(welkemap)) Then
+            '        System.IO.Directory.CreateDirectory(welkemap)
+            '    End If
+            '    fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
+            'End If
 
-            If CheckBox_Werkplaats.Checked = True Then
-                welkemap = "C:\Temp\Werkplaats"
-                'fi.IsReadOnly = False
-                If (Not System.IO.Directory.Exists(welkemap)) Then
-                    System.IO.Directory.CreateDirectory(welkemap)
-                End If
-                fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
-            End If
+            'If CheckBox_Werkplaats.Checked = True Then
+            '    welkemap = "C:\Temp\Werkplaats"
+            '    'fi.IsReadOnly = False
+            '    If (Not System.IO.Directory.Exists(welkemap)) Then
+            '        System.IO.Directory.CreateDirectory(welkemap)
+            '    End If
+            '    fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
+            'End If
 
-            If CheckBox1PDF.Checked = False And CheckBox2DXF.Checked = False And CheckBox3DWG.Checked = False And CheckBox_Blanco.Checked = False Then
-                digitaalprinten = False
-            Else
-                digitaalprinten = True
+            'If CheckBox1PDF.Checked = False And CheckBox2DXF.Checked = False And CheckBox3DWG.Checked = False And CheckBox_Blanco.Checked = False Then
+            '    digitaalprinten = False
+            'Else
+            '    digitaalprinten = True
 
-            End If
-            If digitaalprinten = True Then
-                welkemap = "C:\Temp"
-                'fi.IsReadOnly = False
-                fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
-            End If
+            'End If
+            'If digitaalprinten = True Then
+            '    welkemap = "C:\Temp"
+            '    'fi.IsReadOnly = False
+            '    fi.CopyTo(Path.Combine(welkemap, fi.Name), True)
+            'End If
 
-            If i + 1 = Aantal_tekeningen Then
-                i = 0
-                ListBox1.SelectedIndex = Nothing
-                Exit For
-            End If
-        Next (i)
+            'If i + 1 = Aantal_tekeningen Then
+            '    i = 0
+            '    ListBox1.SelectedIndex = Nothing
+            '    Exit For
+            'End If
+        Next
 
-        ''hieronder printen
-        ''hieronder printen
-        ''hieronder printen
+        '----------------hieronder printen------------------------
 
         ''assemblage printen
-        For i = 0 To Aantal_tekeningen
-            ListBox1.SelectedIndex = i
+        For i2 = 0 To Aantal_tekeningen
+            ListBox1.SelectedIndex = i2
             myfile = CType(ListBox1.SelectedItem, String)
             fi = New FileInfo(myfile)
 
             If CheckBox_Assemblage.Checked = True Then
                 welkemap = "C:\Temp\Assemblage"
-                Dim diar1 As IO.FileInfo() = di.GetFiles("*.idw")
+                Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
                 Call Bestand_openen(fi, welkemap, digitaalprinten)
             Else
                 Exit For
             End If
 
-            If i + 1 = Aantal_tekeningen Then
-                i = 0
+            If i2 + 1 = Aantal_tekeningen Then
+                i2 = 0
                 digitaalprinten = False
                 Exit For
             End If
-        Next (i)
+        Next
         ''assemblage printen
 
         ''Bedrijfsbureau printen
-        For i = 0 To Aantal_tekeningen
+        For i3 = 0 To Aantal_tekeningen
             ListBox1.SelectedIndex = i
             myfile = CType(ListBox1.SelectedItem, String)
             fi = New FileInfo(myfile)
 
             If CheckBox_Bedrijfsbureau.Checked = True Then
                 welkemap = "C:\Temp\Bedrijfsbureau"
-                Dim diar1 As IO.FileInfo() = di.GetFiles("*.idw")
+                Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
                 Call Bestand_openen(fi, welkemap, digitaalprinten)
             Else
                 Exit For
             End If
 
-            If i + 1 = Aantal_tekeningen Then
+            If i3 + 1 = Aantal_tekeningen Then
                 digitaalprinten = False
-                i = 0
+                i3 = 0
                 Exit For
             End If
-        Next (i)
+        Next
         ''Bedrijfsbureau printen
 
         ''Werkplaats printen
-        For i = 0 To Aantal_tekeningen
-            ListBox1.SelectedIndex = i
+        For i4 = 0 To Aantal_tekeningen
+            ListBox1.SelectedIndex = i4
             myfile = CType(ListBox1.SelectedItem, String)
             fi = New FileInfo(myfile)
 
             If CheckBox_Werkplaats.Checked = True Then
                 welkemap = "C:\Temp\Werkplaats"
-                Dim diar1 As IO.FileInfo() = di.GetFiles("*.idw")
+                Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
                 Call Bestand_openen(fi, welkemap, digitaalprinten)
             Else
                 Exit For
             End If
 
-            If i + 1 = Aantal_tekeningen Then
+            If i4 + 1 = Aantal_tekeningen Then
                 digitaalprinten = False
-                i = 0
+                i4 = 0
                 Exit For
             End If
-        Next (i)
+        Next
         ''Werkplaats printen
 
         ''digitaal printen
         If digitaalprinten = True Then
-            For i = 0 To Aantal_tekeningen
+            For i5 = 0 To Aantal_tekeningen
                 ListBox1.SelectedIndex = i
                 myfile = CType(ListBox1.SelectedItem, String)
                 fi = New FileInfo(myfile)
                 If digitaalprinten = True Then
                     welkemap = "C:\Temp"
-                    Dim diar1 As IO.FileInfo() = di.GetFiles("*.idw")
+                    Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
                     Call Bestand_openen(fi, welkemap, digitaalprinten)
                 Else
                     Exit For
                 End If
-                If i + 1 = Aantal_tekeningen Then
+                If i5 + 1 = Aantal_tekeningen Then
                     digitaalprinten = False
-                    i = 0
+                    i5 = 0
                     Exit For
                 End If
-            Next (i)
+            Next
         End If
         ''digitaal printen
 
@@ -297,10 +307,8 @@ Public Class Form1
         If CheckBox1PDF.Checked = False And CheckBox2DXF.Checked = False And CheckBox3DWG.Checked = False Then
             ListBox1.Items.Clear()
         Else
-
-            For i = 0 To Aantal_tekeningen
-                'ListBox1.SelectedIndex = i
-                ListBox1.SelectedIndex = 0
+            For i6 = 0 To Aantal_tekeningen
+                'ListBox1.SelectedIndex = i6
                 myfile = CType(ListBox1.SelectedItem, String)
                 fi = New FileInfo(myfile)
                 welkemap = "C:\Temp"
@@ -336,12 +344,11 @@ Public Class Form1
                     ''Exit Sub
                 End If
 
-                If i + 1 = Aantal_tekeningen Then
-                    i = 0
+                If i6 + 1 = Aantal_tekeningen Then
+                    i6 = 0
                     Exit For
                 End If
-
-            Next (i)
+            Next
         End If
         ''   System.Threading.Thread.Sleep(1000)
         ''   Timer1.Enabled = True
@@ -578,149 +585,146 @@ Public Class Form1
 #Region "PDF PRINTERT"
 
     Private Sub PlotPdf()
-        '----
-        '        On Error GoTo Err_Control
+        On Error GoTo Err_Control
 
-        '        Dim killit As Integer
-        '        Dim numsheets As Integer
-        '        Dim InitPrinter As String
-        '        Dim PDFCreator1 As Object
-        '        numsheets = 0
+        Dim killit As Integer
+        Dim numsheets As Integer
+        Dim InitPrinter As String
+        Dim PDFCreator1 As Object
+        numsheets = 0
 
-        '        ' Set reference to active drawing
-        '        Dim oDrgDoc As Inventor.DrawingDocument
-        '        oDrgDoc = CType(inventorApplication.ActiveDocument, Inventor.DrawingDocument)
+        ' Set reference to active drawing
+        Dim oDrgDoc As Inventor.DrawingDocument
+        oDrgDoc = CType(inventorApplication.ActiveDocument, Inventor.DrawingDocument)
 
-        '        ' Set reference to drawing print manager
-        '        Dim oDrgPrintMgr As Inventor.DrawingPrintManager
-        '        oDrgPrintMgr = CType(oDrgDoc.PrintManager, Inventor.DrawingPrintManager)
+        ' Set reference to drawing print manager
+        Dim oDrgPrintMgr As Inventor.DrawingPrintManager
+        oDrgPrintMgr = CType(oDrgDoc.PrintManager, Inventor.DrawingPrintManager)
 
-        '        'Read printer so it can be set back
-        '        InitPrinter = oDrgPrintMgr.Printer
-        '        PDFCreator1 = CreateObject("PDFCreator.clsPDFCreator")
-        '        If inventorApplication.ActiveDocument.DocumentType = Inventor.DocumentTypeEnum.kDrawingDocumentObject Then
+        'Read printer so it can be set back
+        InitPrinter = oDrgPrintMgr.Printer
+        PDFCreator1 = CreateObject("PDFCreator.clsPDFCreator")
+        If inventorApplication.ActiveDocument.DocumentType = Inventor.DocumentTypeEnum.kDrawingDocumentObject Then
 
-        '            If PDFCreator1.cStart("/NoProcessingAtStartup") = False Then
-        '                killit = Shell("taskkill /f /im PDFCreator.exe", CType(VBA.VbAppWinStyle.vbHide, AppWinStyle))
-        '                MsgBox("There was an error starting the pdf printer, please try (click) again!")
-        '                Debug.Print("Can't initialize PDFCreator.")
-        '                Exit Sub
-        '            End If
+            If PDFCreator1.cStart("/NoProcessingAtStartup") = False Then
+                killit = Shell("taskkill /f /im PDFCreator.exe", CType(VBA.VbAppWinStyle.vbHide, AppWinStyle))
+                MsgBox("There was an error starting the pdf printer, please try (click) again!")
+                Debug.Print("Can't initialize PDFCreator.")
+                Exit Sub
+            End If
 
-        '            'Debug.Print "PDFCreator initialized."
+            'Set some settings and clear queue
+            PDFCreator1.cOption("UseAutosave") = 1
+            PDFCreator1.cOption("UseAutosaveDirectory") = 1
+            PDFCreator1.cOption("AutosaveFormat") = 0 ' 0 = PDF
+            PDFCreator1.cClearCache()
 
-        '            'Set some settings and clear queue
-        '            PDFCreator1.cOption("UseAutosave") = 1
-        '            PDFCreator1.cOption("UseAutosaveDirectory") = 1
-        '            PDFCreator1.cOption("AutosaveFormat") = 0 ' 0 = PDF
-        '            PDFCreator1.cClearCache()
+            ' Set the printer to PDFCreator
+            oDrgPrintMgr.Printer = "PDFCreator"
 
-        '            ' Set the printer to PDFCreator
-        '            oDrgPrintMgr.Printer = "PDFCreator"
+            Dim sht As Inventor.Sheet
 
-        '            Dim sht As Inventor.Sheet
+            For Each sht In oDrgDoc.Sheets
+                sht.Activate()
+                'Set the paper size , scale and orientation
+                oDrgPrintMgr.ScaleMode = Inventor.PrintScaleModeEnum.kPrintFullScale  ' kPrintBestFitScale
+                ' Change the paper size to a custom size. The units are in centimeters.
+                Dim shtsize As Long
+                Dim shtorientation As Long
+                shtsize = sht.Size
+                shtorientation = sht.Orientation
+                oDrgPrintMgr.PaperSize = Inventor.PaperSizeEnum.kPaperSizeCustom
+                If shtsize = 9993 Then ' A0
+                    oDrgPrintMgr.PaperHeight = 84.1
+                    oDrgPrintMgr.PaperWidth = 118.9
+                ElseIf shtsize = 9994 Then ' A1
+                    oDrgPrintMgr.PaperHeight = 59.4
+                    oDrgPrintMgr.PaperWidth = 84.1
+                ElseIf shtsize = 9995 Then ' A2
+                    oDrgPrintMgr.PaperHeight = 42
+                    oDrgPrintMgr.PaperWidth = 59.4
+                ElseIf shtsize = 9996 Then ' A3
+                    oDrgPrintMgr.PaperHeight = 29.7
+                    oDrgPrintMgr.PaperWidth = 42
+                ElseIf shtsize = 9997 Then ' A4
+                    oDrgPrintMgr.PaperHeight = 21
+                    oDrgPrintMgr.PaperWidth = 29.7
+                End If
+                oDrgPrintMgr.PrintRange = Inventor.PrintRangeEnum.kPrintCurrentSheet
+                If shtorientation = 10242 Then 'Landscape
+                    oDrgPrintMgr.Orientation = Inventor.PrintOrientationEnum.kLandscapeOrientation
+                ElseIf shtorientation = 10243 Then 'Portrait
+                    oDrgPrintMgr.Orientation = Inventor.PrintOrientationEnum.kPortraitOrientation
+                End If
 
-        '            For Each sht In oDrgDoc.Sheets
-        '                sht.Activate()
-        '                'Set the paper size , scale and orientation
-        '                oDrgPrintMgr.ScaleMode = Inventor.PrintScaleModeEnum.kPrintFullScale  ' kPrintBestFitScale
-        '                ' Change the paper size to a custom size. The units are in centimeters.
-        '                Dim shtsize As Long
-        '                Dim shtorientation As Long
-        '                shtsize = sht.Size
-        '                shtorientation = sht.Orientation
-        '                oDrgPrintMgr.PaperSize = Inventor.PaperSizeEnum.kPaperSizeCustom
-        '                If shtsize = 9993 Then ' A0
-        '                    oDrgPrintMgr.PaperHeight = 84.1
-        '                    oDrgPrintMgr.PaperWidth = 118.9
-        '                ElseIf shtsize = 9994 Then ' A1
-        '                    oDrgPrintMgr.PaperHeight = 59.4
-        '                    oDrgPrintMgr.PaperWidth = 84.1
-        '                ElseIf shtsize = 9995 Then ' A2
-        '                    oDrgPrintMgr.PaperHeight = 42
-        '                    oDrgPrintMgr.PaperWidth = 59.4
-        '                ElseIf shtsize = 9996 Then ' A3
-        '                    oDrgPrintMgr.PaperHeight = 29.7
-        '                    oDrgPrintMgr.PaperWidth = 42
-        '                ElseIf shtsize = 9997 Then ' A4
-        '                    oDrgPrintMgr.PaperHeight = 21
-        '                    oDrgPrintMgr.PaperWidth = 29.7
-        '                End If
-        '                oDrgPrintMgr.PrintRange = Inventor.PrintRangeEnum.kPrintCurrentSheet
-        '                If shtorientation = 10242 Then 'Landscape
-        '                    oDrgPrintMgr.Orientation = Inventor.PrintOrientationEnum.kLandscapeOrientation
-        '                ElseIf shtorientation = 10243 Then 'Portrait
-        '                    oDrgPrintMgr.Orientation = Inventor.PrintOrientationEnum.kPortraitOrientation
-        '                End If
+                oDrgPrintMgr.AllColorsAsBlack = True
+                oDrgPrintMgr.Rotate90Degrees = True
 
-        '                oDrgPrintMgr.AllColorsAsBlack = True
-        '                oDrgPrintMgr.Rotate90Degrees = True
+                Dim VTKDWGNR As String = Get_drawing_nr(CType(oDrgDoc, Inventor.Document))
 
-        '                Dim VTKDWGNR As String = Get_drawing_nr(CType(oDrgDoc, Inventor.Document))
-
-        '                PDFCreator1.cOption("AutosaveDirectory") = TextBox1DOELMAP.Text
-        '                PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR
-        '                ''    PDFCreator1.cOption("AutosaveFilename") = oDrgDoc.DisplayName
+                PDFCreator1.cOption("AutosaveDirectory") = TextBox1DOELMAP.Text
+                PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR
+                ''    PDFCreator1.cOption("AutosaveFilename") = oDrgDoc.DisplayName
 
 
-        '                ''With PDFCreator1
-        '                ''    .cOption("AutosaveDirectory") = "M:\Engineering\PDFprinterVTK\\SWAP lijst"
-        '                ''    .cOption("AutosaveFilename") = oDrgDoc.DisplayName
-        '                ''End With
+                ''With PDFCreator1
+                ''    .cOption("AutosaveDirectory") = "M:\Engineering\PDFprinterVTK\\SWAP lijst"
+                ''    .cOption("AutosaveFilename") = oDrgDoc.DisplayName
+                ''End With
 
-        '                oDrgPrintMgr.SubmitPrint()
+                oDrgPrintMgr.SubmitPrint()
 
-        '                System.Threading.Thread.Sleep(1000)
+                System.Threading.Thread.Sleep(1000)
 
-        '                numsheets = numsheets + 1
-        '            Next
-        '        Else
-        '            MsgBox("You aren't using an Inventor drawing!")
-        '            Exit Sub
-        '        End If
+                numsheets = numsheets + 1
+            Next
+        Else
+            MsgBox("You aren't using an Inventor drawing!")
+            Exit Sub
+        End If
 
-        '        'Wait until all prints are in queue
-        '        Do Until PDFCreator1.cCountOfPrintjobs = numsheets
-        '            System.Windows.Forms.Application.DoEvents()
-        '            System.Threading.Thread.Sleep(1000)
-        '        Loop
+        'Wait until all prints are in queue
+        Do Until PDFCreator1.cCountOfPrintjobs = numsheets
+            System.Windows.Forms.Application.DoEvents()
+            System.Threading.Thread.Sleep(1000)
+        Loop
 
-        '        'Combine sheets in queue to one pdf
-        '        With PDFCreator1
-        '            .cCombineAll()
-        '            .cPrinterStop = False
-        '        End With
+        'Combine sheets in queue to one pdf
+        With PDFCreator1
+            .cCombineAll()
+            .cPrinterStop = False
+        End With
 
-        '        'Wait until job done
-        '        Do Until PDFCreator1.cCountOfPrintjobs = 0
-        '            System.Windows.Forms.Application.DoEvents()
-        '            System.Threading.Thread.Sleep(1000)
-        '        Loop
+        'Wait until job done
+        Do Until PDFCreator1.cCountOfPrintjobs = 0
+            System.Windows.Forms.Application.DoEvents()
+            System.Threading.Thread.Sleep(1000)
+        Loop
 
-        '        'Set back to first sheet and set printer back
-        '        oDrgDoc.Sheets(1).Activate()
-        '        oDrgPrintMgr.Printer = InitPrinter
+        'Set back to first sheet and set printer back
+        oDrgDoc.Sheets(1).Activate()
+        oDrgPrintMgr.Printer = InitPrinter
 
-        '        'Clean up
-        '        PDFCreator1.cClose()
-        '        killit = Shell("taskkill /f /im PDFCreator.exe", CType(VBA.VbAppWinStyle.vbHide, AppWinStyle))
-        '        oDrgDoc = Nothing
-        '        oDrgPrintMgr = Nothing
+        'Clean up
+        PDFCreator1.cClose()
+        killit = Shell("taskkill /f /im PDFCreator.exe", CType(VBA.VbAppWinStyle.vbHide, AppWinStyle))
+        oDrgDoc = Nothing
+        oDrgPrintMgr = Nothing
 
-        'Exit_Here:
-        '        Exit Sub
-        'Err_Control:
-        '        Select Case Err.Number
-        '            'Add your Case selections here
-        '            'Case Is = 1000
-        '            'Handle error
-        '            'Err.Clear
-        '            'Resume Exit_Here
-        '            Case Else
-        '                MsgBox(Err.Number & ", " & Err.Description, , "PlotPdf")
-        '                Err.Clear()
-        '                Resume Exit_Here
-        '        End Select
+Exit_Here:
+        Exit Sub
+Err_Control:
+        Select Case Err.Number
+            'Add your Case selections here
+            'Case Is = 1000
+            'Handle error
+            'Err.Clear
+            'Resume Exit_Here
+            Case Else
+                MsgBox(Err.Number & ", " & Err.Description, , "PlotPdf")
+                Err.Clear()
+                Resume Exit_Here
+        End Select
     End Sub
 #End Region
 #Region "Stempelen"
@@ -799,14 +803,12 @@ Public Class Form1
             Dim oTextBox As Inventor.TextBox
             oTextBox = oSketch.TextBoxes.AddFitted(oTG.CreatePoint2d(breete - 0.1, Hoogte), sText)
 
-
             'rgb systeem 120,120,120=grijs
             ' 255,0,0=rood
             Dim kleur As Inventor.Color = inventorApplication.TransientObjects.CreateColor(255, 0, 0)
             ' must be 0, pi/2, pi, or pi*1.5
             oTextBox.Rotation = Math.PI / 2
             oTextBox.Color() = kleur
-
 
         Catch ex As Exception
             ''  MsgBox("Peter H special error detected rerouting code", )
@@ -863,7 +865,6 @@ Public Class Form1
 
         oLines(0) = oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(breete, 7.9), oTG.CreatePoint2d(breete - 1.2, 7.9))
         oLines(1) = oSketch.SketchLines.AddByTwoPoints(oLines(0).EndSketchPoint, oTG.CreatePoint2d(breete - 1.2, 0.8))
-
         oSketch.ExitEdit()
 
         'toevoegen naam aan schets V
@@ -895,15 +896,6 @@ Public Class Form1
                 oDrgPrintMgr.Printer = "\\VTKFILE\HP5100"
             ElseIf RadioButton_Xerox_Boven.Checked = True Then
                 ''  oDrgPrintMgr.Printer = "\\VTKFILE\Xerox WorkCentre 5632 PS"
-
-                ''perforeeren of niet optie makenp erforeeren of niet optie maken
-                ''perforeeren of niet optie maken
-                ' '''perforeeren of niet optie maken
-                '' '''perforeeren of niet optie maken
-                '' '''perforeeren of niet optie maken
-                '' '''perforeeren of niet optie maken
-                '' '''perforeeren of niet optie maken
-
                 '' '''perforeeren of niet optie maken
                 oDrgPrintMgr.Printer = "\\VTKFILE\Xerox 5632 Engineering (Perforeren)"
 
@@ -977,4 +969,8 @@ Public Class Form1
         MessageBox.Show(PrintDialog1.PrinterSettings.PrinterName)
     End Sub
 
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Doelmap = "c:\tmp"
+        TextBox1DOELMAP.Text = "c:\tmp"
+    End Sub
 End Class
