@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -82,6 +82,7 @@ Partial Class Form1
         '
         'Timer1
         '
+        Me.Timer1.Interval = 1000
         '
         'GroupBox1
         '
@@ -109,6 +110,8 @@ Partial Class Form1
         'CheckBox4
         '
         Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Checked = True
+        Me.CheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox4.Cursor = System.Windows.Forms.Cursors.Default
         Me.CheckBox4.Location = New System.Drawing.Point(7, 91)
         Me.CheckBox4.Name = "CheckBox4"
@@ -140,6 +143,8 @@ Partial Class Form1
         'CheckBox1PDF
         '
         Me.CheckBox1PDF.AutoSize = True
+        Me.CheckBox1PDF.Checked = True
+        Me.CheckBox1PDF.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox1PDF.Location = New System.Drawing.Point(7, 20)
         Me.CheckBox1PDF.Name = "CheckBox1PDF"
         Me.CheckBox1PDF.Size = New System.Drawing.Size(47, 17)
@@ -212,6 +217,8 @@ Partial Class Form1
         'CheckBox_Assemblage
         '
         Me.CheckBox_Assemblage.AutoSize = True
+        Me.CheckBox_Assemblage.Checked = True
+        Me.CheckBox_Assemblage.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox_Assemblage.Location = New System.Drawing.Point(7, 42)
         Me.CheckBox_Assemblage.Name = "CheckBox_Assemblage"
         Me.CheckBox_Assemblage.Size = New System.Drawing.Size(83, 17)
@@ -280,7 +287,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(21, 440)
+        Me.Button3.Location = New System.Drawing.Point(13, 413)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(131, 23)
         Me.Button3.TabIndex = 10
