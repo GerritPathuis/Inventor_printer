@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ALLES IN 1 PRINTER.exe" size="123320">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ALLES IN 1 PRINTER.exe" size="124344">
       <assemblyIdentity name="ALLES IN 1 PRINTER" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>z+AGH/+J3GhFa/aTw0qcGF8shBk=</dsig:DigestValue>
+        <dsig:DigestValue>r7sBregN1wGcK8vmADpg4OFwMG0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

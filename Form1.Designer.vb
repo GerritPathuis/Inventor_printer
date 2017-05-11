@@ -48,6 +48,7 @@ Partial Class Form1
         Me.RadioButton_HP_5100 = New System.Windows.Forms.RadioButton()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -192,7 +193,6 @@ Partial Class Form1
         Me.GroupBox_Stempeltype.TabIndex = 8
         Me.GroupBox_Stempeltype.TabStop = False
         Me.GroupBox_Stempeltype.Text = "Stempeltype"
-        Me.GroupBox_Stempeltype.Visible = False
         '
         'CheckBox_Blanco
         '
@@ -247,7 +247,6 @@ Partial Class Form1
         Me.GroupBox_Printer.TabIndex = 9
         Me.GroupBox_Printer.TabStop = False
         Me.GroupBox_Printer.Text = "Printer"
-        Me.GroupBox_Printer.Visible = False
         '
         'RadioButton_default
         '
@@ -348,4 +347,5 @@ Partial Class Form1
     Friend WithEvents CheckBox_Blanco As System.Windows.Forms.CheckBox
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents Button3 As Button
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class

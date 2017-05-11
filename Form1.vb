@@ -31,7 +31,6 @@ Public Class Form1
     End Function
 #End Region
 
-#Region "Drag drop"
     Private Sub ListBox1_DragDrop(sender As Object, e As System.Windows.Forms.DragEventArgs) Handles ListBox1.DragDrop
         Dim Files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
         For Each filename As String In Files
@@ -49,9 +48,7 @@ Public Class Form1
     'Private Sub ListBox1_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles ListBox1.SelectedIndexChanged
 
     'End Sub
-#End Region
 
-#Region "set doelmap"
     Private Sub Button1_Click(sender As System.Object, e As System.EventArgs) Handles Button1.Click
         'selecteer doelmap
         FolderBrowserDialog1.ShowDialog()
@@ -59,7 +56,6 @@ Public Class Form1
         TextBox1DOELMAP.Text = Doelmap
     End Sub
 
-#End Region
     Private Sub Button2_Click(sender As System.Object, e As System.EventArgs) Handles Button2.Click
         Dim Aantal_tekeningen As Integer = ListBox1.Items.Count
         Dim i As Integer
@@ -104,6 +100,7 @@ Public Class Form1
 
         Timer1.Start()
     End Sub
+
     Private Sub Copy_to_work_directories()
         Dim myfile As String
         Dim fi As FileInfo
@@ -209,67 +206,67 @@ Public Class Form1
         Next
 
         '-------------- Bedrijfsbureau printen
-        'For i3 = 0 To Aantal_tekeningen
-        '    ListBox1.SelectedIndex = i
-        '    myfile = CType(ListBox1.SelectedItem, String)
-        '    fi = New FileInfo(myfile)
+        For i3 = 0 To Aantal_tekeningen
+            ListBox1.SelectedIndex = i3
+            myfile = CType(ListBox1.SelectedItem, String)
+            fi = New FileInfo(myfile)
 
-        '    If CheckBox_Bedrijfsbureau.Checked = True Then
-        '        welkemap = "C:\Temp\Bedrijfsbureau"
-        '        Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
-        '        Call Bestand_openen(fi, welkemap, digitaalprinten)
-        '    Else
-        '        Exit For
-        '    End If
+            If CheckBox_Bedrijfsbureau.Checked = True Then
+                welkemap = "C:\Temp\Bedrijfsbureau"
+                Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
+                Call Bestand_openen(fi, welkemap, digitaalprinten)
+            Else
+                Exit For
+            End If
 
-        '    If i3 + 1 = Aantal_tekeningen Then
-        '        digitaalprinten = False
-        '        i3 = 0
-        '        Exit For
-        '    End If
-        'Next
+            If i3 + 1 = Aantal_tekeningen Then
+                digitaalprinten = False
+                i3 = 0
+                Exit For
+            End If
+        Next
 
         '------------ Werkplaats printen
-        'For i4 = 0 To Aantal_tekeningen
-        '    ListBox1.SelectedIndex = i4
-        '    myfile = CType(ListBox1.SelectedItem, String)
-        '    fi = New FileInfo(myfile)
+        For i4 = 0 To Aantal_tekeningen
+            ListBox1.SelectedIndex = i4
+            myfile = CType(ListBox1.SelectedItem, String)
+            fi = New FileInfo(myfile)
 
-        '    If CheckBox_Werkplaats.Checked = True Then
-        '        welkemap = "C:\Temp\Werkplaats"
-        '        Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
-        '        Call Bestand_openen(fi, welkemap, digitaalprinten)
-        '    Else
-        '        Exit For
-        '    End If
+            If CheckBox_Werkplaats.Checked = True Then
+                welkemap = "C:\Temp\Werkplaats"
+                Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
+                Call Bestand_openen(fi, welkemap, digitaalprinten)
+            Else
+                Exit For
+            End If
 
-        '    If i4 + 1 = Aantal_tekeningen Then
-        '        digitaalprinten = False
-        '        i4 = 0
-        '        Exit For
-        '    End If
-        'Next
+            If i4 + 1 = Aantal_tekeningen Then
+                digitaalprinten = False
+                i4 = 0
+                Exit For
+            End If
+        Next
 
-        ''digitaal printen
-        'If digitaalprinten = True Then
-        '    For i5 = 0 To Aantal_tekeningen
-        '        ListBox1.SelectedIndex = i
-        '        myfile = CType(ListBox1.SelectedItem, String)
-        '        fi = New FileInfo(myfile)
-        '        If digitaalprinten = True Then
-        '            welkemap = "C:\Temp"
-        '            Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
-        '            Call Bestand_openen(fi, welkemap, digitaalprinten)
-        '        Else
-        '            Exit For
-        '        End If
-        '        If i5 + 1 = Aantal_tekeningen Then
-        '            digitaalprinten = False
-        '            i5 = 0
-        '            Exit For
-        '        End If
-        '    Next
-        'End If
+        'digitaal printen
+        If digitaalprinten = True Then
+            For i5 = 0 To Aantal_tekeningen
+                ListBox1.SelectedIndex = i5
+                myfile = CType(ListBox1.SelectedItem, String)
+                fi = New FileInfo(myfile)
+                If digitaalprinten = True Then
+                    welkemap = "C:\Temp"
+                    Dim diar1 As IO.FileInfo() = dir.GetFiles("*.idw")
+                    Call Bestand_openen(fi, welkemap, digitaalprinten)
+                Else
+                    Exit For
+                End If
+                If i5 + 1 = Aantal_tekeningen Then
+                    digitaalprinten = False
+                    i5 = 0
+                    Exit For
+                End If
+            Next
+        End If
 
         ''mappen in temp vernietigen
         ''Dim path1 As String = "x"
@@ -349,23 +346,17 @@ Public Class Form1
 
     Private Sub Bestand_openen(ByVal fi As FileInfo, ByVal Welkemap As String, ByVal digitaalprinten As Boolean)
         Dim oDoc As Inventor.DrawingDocument = CType(inventorApplication.Documents.Open(Path.Combine(Welkemap, fi.Name)), Inventor.DrawingDocument)
-        'Dim oDoc As Inventor.DrawingDocument oude code van het net
-
-        oDoc = inventorApplication.ActiveDocument
-
         Dim cTblock As Inventor.TitleBlock
-        cTblock = oDoc.ActiveSheet.TitleBlock
         Dim oTexts As Inventor.TextBoxes
         Dim oText As Inventor.TextBox
-        Dim oSketch As Inventor.Sketch
+        Dim oSketch As Inventor.Sketch = Nothing    'Nothing is added to prevent errors
+
+        oDoc = inventorApplication.ActiveDocument
+        cTblock = oDoc.ActiveSheet.TitleBlock
         cTblock.Definition.Edit(oSketch)
         oTexts = oSketch.TextBoxes
-
         For Each oText In oTexts
-            If oText.Text = "<FILENAME AND PATH>" Then
-                oText.Text = ListBox1.Text
-
-            End If
+            If oText.Text = "<FILENAME AND PATH>" Then oText.Text = ListBox1.Text
         Next
 
         cTblock.Definition.ExitEdit(True)
@@ -394,43 +385,41 @@ Public Class Form1
 
         oDoc.Close(True)
 
-        ''TToepassen --> coppy van c:\temp verwijderen
-        ''Toepassen --> read only aanpassen
-        ' ''Dim FileToDelete As String = (Path.Combine(Welkemap, fi.Name))
-        '' '' Create the FileInfo object
-        ' ''Dim oFileInfo As New FileInfo(FileToDelete)
-        '' '' Check attributes
-        '' '' If Read-Only, Set attribute to false
-        ' ''If (oFileInfo.Attributes And FileAttributes.ReadOnly) > 0 Then
-        ' ''    ' Update attributes
-        ' ''    oFileInfo.Attributes = oFileInfo.Attributes Xor FileAttributes.ReadOnly
-        ' ''    ' Delete the file
-        ' ''    File.Delete(FileToDelete)
-        ' ''End If
+        'TToepassen --> coppy van c:\temp verwijderen
+        'Toepassen --> read only aanpassen
+        Dim FileToDelete As String = (Path.Combine(Welkemap, fi.Name))
+        ' Create the FileInfo object
+        Dim oFileInfo As New FileInfo(FileToDelete)
+        ' Check attributes
+        ' If Read-Only, Set attribute to false
+        If (oFileInfo.Attributes And FileAttributes.ReadOnly) > 0 Then
+            ' Update attributes
+            oFileInfo.Attributes = oFileInfo.Attributes Xor FileAttributes.ReadOnly
+            ' Delete the file
+            File.Delete(FileToDelete)
+        End If
 
 
-        ' '' ''Dim FileToDelete As String
-        ' '' ''FileToDelete = (Path.Combine("C:\Temp", fi.Name))
-        ' ''If System.IO.File.Exists(FileToDelete) = True Then
-        ' ''    System.IO.File.Delete(FileToDelete)
-        ' ''End If
+        'Dim FileToDelete As String
+        'FileToDelete = (Path.Combine("C:\Temp", fi.Name))
+        If System.IO.File.Exists(FileToDelete) = True Then
+            System.IO.File.Delete(FileToDelete)
+        End If
 
-        ' ''ListBox1.Items.Remove(ListBox1.SelectedItem)
+        ListBox1.Items.Remove(ListBox1.SelectedItem)
 
-        ' ''If ListBox1.Items.Count = 0 Then
-        ' ''    Dim result = MessageBox.Show("Alle tekeningen zijn  geprint" & Environment.NewLine & "Wil je dit programma afsluiten", "Alles in een printer", MessageBoxButtons.YesNo)
-        ' ''    If result = DialogResult.No Then
-        ' ''        Exit Sub
-        ' ''    ElseIf result = DialogResult.Yes Then
-        ' ''        Application.Exit()
-        ' ''    End If
-        ' ''    ''MsgBox("Alle tekeningen zijn geprint", MsgBoxStyle.YesNo, "ALLES_IN_1_PRINTER")
-        ' ''    ''Exit Sub
-        ' ''End If
+        If ListBox1.Items.Count = 0 Then
+            Dim result = MessageBox.Show("Alle tekeningen zijn  geprint" & Environment.NewLine & "Wil je dit programma afsluiten", "Alles in een printer", MessageBoxButtons.YesNo)
+            If result = DialogResult.No Then
+                Exit Sub
+            ElseIf result = DialogResult.Yes Then
+                Application.Exit()
+            End If
+            MsgBox("Alle tekeningen zijn geprint", MsgBoxStyle.YesNo, "ALLES_IN_1_PRINTER")
+            Exit Sub
+        End If
 
     End Sub
-
-#Region "DWG Printer"
 
     Private Sub PlotDWG()
 
@@ -493,9 +482,6 @@ Public Class Form1
         Call DWGAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)
     End Sub
 
-#End Region
-
-#Region "get name"
     Private Function Get_drawing_nr(ByVal oDocument As Inventor.Document) As String
         'Dim VTKDWGNR As String
         Get_drawing_nr = oDocument.DisplayName
@@ -515,9 +501,6 @@ Public Class Form1
 
         Return Get_drawing_nr
     End Function
-#End Region
-
-#Region "DXF PRINTER"
 
     Private Sub PlotDXF()
         ' Get the DXF translator Add-In.
@@ -559,10 +542,6 @@ Public Class Form1
 
         Call DXFAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)
     End Sub
-
-#End Region
-
-#Region "PDF PRINTERT"
 
     Private Sub PlotPdf()
         On Error GoTo Err_Control
@@ -706,8 +685,7 @@ Err_Control:
                 Resume Exit_Here
         End Select
     End Sub
-#End Region
-#Region "Stempelen"
+
     Private Sub Locatie_stempel()
         Dim hoogte_titelblok As Double = 0
         Dim breete_titelblok As Double = 0
@@ -721,7 +699,7 @@ Err_Control:
 
             ' Change the paper size to a custom size. The units are in centimeters.
             Dim shtsize As Long
-            ''     Dim shtorientation As Long
+            ' Dim shtorientation As Long
             shtsize = sheet.Size
 
             If shtsize = 9993 Then ' A0
@@ -852,9 +830,9 @@ Err_Control:
 
         Call print_fysiek()
 
-        ''Toevoegen sheet 2 bestempelen
+        'Toevoegen sheet 2 bestempelen
 
-        ''schets verwijderen
+        'schets verwijderen
         oSketch.Delete()
     End Sub
 
@@ -893,18 +871,16 @@ Err_Control:
         End If
     End Sub
 
-#End Region
-
     Private Sub CheckBox4_CheckedChanged(sender As System.Object, e As System.EventArgs) Handles CheckBox4.CheckedChanged
         If CheckBox4.Checked = True Then
-            GroupBox_Stempeltype.Visible = True
-            GroupBox_Printer.Visible = True
+            ' GroupBox_Stempeltype.Visible = True
+            ' GroupBox_Printer.Visible = True
             CheckBox_Werkplaats.Checked = True
             CheckBox_Assemblage.Checked = True
             CheckBox_Bedrijfsbureau.Checked = True
         Else
-            GroupBox_Stempeltype.Visible = False
-            GroupBox_Printer.Visible = False
+            ' GroupBox_Stempeltype.Visible = False
+            ' GroupBox_Printer.Visible = False
             CheckBox_Werkplaats.Checked = False
             CheckBox_Assemblage.Checked = False
             CheckBox_Bedrijfsbureau.Checked = False
@@ -939,12 +915,12 @@ Err_Control:
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ' PrintDialog1.Document = PrintDocument1
-        'PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
+        PrintDialog1.Document = PrintDocument1
+        PrintDialog1.PrinterSettings = PrintDocument1.PrinterSettings
         PrintDialog1.AllowSomePages = True
         If PrintDialog1.ShowDialog = DialogResult.OK Then
-            'PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
-            'PrintDocument1.Print()
+            PrintDocument1.PrinterSettings = PrintDialog1.PrinterSettings
+            PrintDocument1.Print()
         End If
         MessageBox.Show(PrintDialog1.PrinterSettings.PrinterName)
     End Sub
@@ -953,6 +929,5 @@ Err_Control:
         Doelmap = "c:\tmp"
         TextBox1DOELMAP.Text = "c:\tmp"
     End Sub
-
 
 End Class
