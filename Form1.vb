@@ -7,7 +7,7 @@ Public Class Form1
     Private inventorApplication As Inventor.Application
 
     Dim digitaalprinten As Boolean = True
-#Region "Inventor link"
+
     Public Sub New()
 
         ' This call is required by the Windows Form Designer.
@@ -29,7 +29,7 @@ Public Class Form1
 
         Return True
     End Function
-#End Region
+
 
     Private Sub ListBox1_DragDrop(sender As Object, e As System.Windows.Forms.DragEventArgs) Handles ListBox1.DragDrop
         Dim Files As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
@@ -351,6 +351,8 @@ Public Class Form1
         Dim oText As Inventor.TextBox
         Dim oSketch As Inventor.Sketch = Nothing    'Nothing is added to prevent errors
 
+        MessageBox.Show("Line 354")
+
         oDoc = inventorApplication.ActiveDocument
         cTblock = oDoc.ActiveSheet.TitleBlock
         cTblock.Definition.Edit(oSketch)
@@ -385,6 +387,9 @@ Public Class Form1
 
         oDoc.Close(True)
 
+        MessageBox.Show("Line 390")
+
+
         'TToepassen --> coppy van c:\temp verwijderen
         'Toepassen --> read only aanpassen
         Dim FileToDelete As String = (Path.Combine(Welkemap, fi.Name))
@@ -399,6 +404,7 @@ Public Class Form1
             File.Delete(FileToDelete)
         End If
 
+        MessageBox.Show("Line 407")
 
         'Dim FileToDelete As String
         'FileToDelete = (Path.Combine("C:\Temp", fi.Name))
@@ -409,6 +415,8 @@ Public Class Form1
         ListBox1.Items.Remove(ListBox1.SelectedItem)
 
         If ListBox1.Items.Count = 0 Then
+
+            MessageBox.Show("Line 419")
             Dim result = MessageBox.Show("Alle tekeningen zijn  geprint" & Environment.NewLine & "Wil je dit programma afsluiten", "Alles in een printer", MessageBoxButtons.YesNo)
             If result = DialogResult.No Then
                 Exit Sub
@@ -422,8 +430,7 @@ Public Class Form1
     End Sub
 
     Private Sub PlotDWG()
-
-
+        MessageBox.Show("Line 425")
         ' Get the DWG translator Add-In.
         Dim DWGAddIn As Inventor.TranslatorAddIn
         DWGAddIn = CType(inventorApplication.ApplicationAddIns.ItemById("{C24E3AC2-122E-11D5-8E91-0010B541CD80}"), Inventor.TranslatorAddIn)
@@ -446,13 +453,14 @@ Public Class Form1
 
         ' Check whether the translator has 'SaveCopyAs' options
         If DWGAddIn.HasSaveCopyAsOptions(oDocument, oContext, oOptions) Then
-
+            MessageBox.Show("Line 448")
             Dim strIniFile As String
             strIniFile = "M:\Engineering\PDFprinterVTK\BASIS SETINGS RB.ini"
 
             ' Create the name-value that specifies the ini file to use.
             oOptions.Value("Export_Acad_IniFile") = strIniFile
         End If
+        MessageBox.Show("Line 455")
 
         ''Set the destination file name
         'oDataMedium.FileName = "c:\temp\dxfout.dxf"
@@ -486,6 +494,9 @@ Public Class Form1
         'Dim VTKDWGNR As String
         Get_drawing_nr = oDocument.DisplayName
         Dim propSets As Inventor.PropertySets = oDocument.PropertySets
+
+        MessageBox.Show("Line 490")
+
         For Each propSet As Inventor.PropertySet In propSets
             Debug.Print(propSet.DisplayName)
             For Each prop As Inventor.Property In propSet
@@ -552,6 +563,8 @@ Public Class Form1
         Dim PDFCreator1 As Object
         numsheets = 0
 
+        MessageBox.Show("Line 558")
+
         ' Set reference to active drawing
         Dim oDrgDoc As Inventor.DrawingDocument
         oDrgDoc = CType(inventorApplication.ActiveDocument, Inventor.DrawingDocument)
@@ -560,12 +573,20 @@ Public Class Form1
         Dim oDrgPrintMgr As Inventor.DrawingPrintManager
         oDrgPrintMgr = CType(oDrgDoc.PrintManager, Inventor.DrawingPrintManager)
 
+
+
         'Read printer so it can be set back
         InitPrinter = oDrgPrintMgr.Printer
+        MessageBox.Show("Line 576")
+
         PDFCreator1 = CreateObject("PDFCreator.clsPDFCreator")
+
+        MessageBox.Show("Line 583a")
+
         If inventorApplication.ActiveDocument.DocumentType = Inventor.DocumentTypeEnum.kDrawingDocumentObject Then
 
             If PDFCreator1.cStart("/NoProcessingAtStartup") = False Then
+
                 killit = Shell("taskkill /f /im PDFCreator.exe", CType(VBA.VbAppWinStyle.vbHide, AppWinStyle))
                 MsgBox("There was an error starting the pdf printer, please try (click) again!")
                 Debug.Print("Can't initialize PDFCreator.")
@@ -578,6 +599,8 @@ Public Class Form1
             PDFCreator1.cOption("AutosaveFormat") = 0 ' 0 = PDF
             PDFCreator1.cClearCache()
 
+            MessageBox.Show("Line 602")
+
             ' Set the printer to PDFCreator
             oDrgPrintMgr.Printer = "PDFCreator"
 
@@ -585,6 +608,9 @@ Public Class Form1
 
             For Each sht In oDrgDoc.Sheets
                 sht.Activate()
+
+                MessageBox.Show("Line 609")
+
                 'Set the paper size , scale and orientation
                 oDrgPrintMgr.ScaleMode = Inventor.PrintScaleModeEnum.kPrintFullScale  ' kPrintBestFitScale
                 ' Change the paper size to a custom size. The units are in centimeters.
@@ -620,6 +646,8 @@ Public Class Form1
                 oDrgPrintMgr.Rotate90Degrees = True
 
                 Dim VTKDWGNR As String = Get_drawing_nr(CType(oDrgDoc, Inventor.Document))
+
+                MessageBox.Show("Line 647")
 
                 PDFCreator1.cOption("AutosaveDirectory") = TextBox1DOELMAP.Text
                 PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR
@@ -693,6 +721,8 @@ Err_Control:
         oDrawDoc = CType(inventorApplication.ActiveDocument, Inventor.DrawingDocument)
         Dim sheet As Inventor.Sheet
 
+        MessageBox.Show("Line 700")
+
         For Each sheet In oDrawDoc.Sheets
             sheet.Activate()
             'Set the paper size , scale and orientation
@@ -701,6 +731,8 @@ Err_Control:
             Dim shtsize As Long
             ' Dim shtorientation As Long
             shtsize = sheet.Size
+
+            MessageBox.Show("Line 715")
 
             If shtsize = 9993 Then ' A0
                 hoogte_titelblok = 1
@@ -725,11 +757,8 @@ Err_Control:
             End If
 
             ''If shtorientation = 10242 Then 'Landscape
-
             ''ElseIf shtorientation = 10243 Then 'Portrait
-
             ''End If
-
             ''Call stempelen(hoogte_titelblok, breete_titelblok) verplaatst ivm multie sheet
         Next
     End Sub
@@ -837,6 +866,9 @@ Err_Control:
     End Sub
 
     Private Sub Print_fysiek()
+
+        MessageBox.Show("Line 848")
+
         'Print all sheets in drawing document
         'Get the active document and check whether it's drawing document
         If inventorApplication.ActiveDocument.DocumentType = Inventor.DocumentTypeEnum.kDrawingDocumentObject Then
@@ -894,6 +926,8 @@ Err_Control:
         Dim Filename As FileInfo
         Dim DirectoryName As DirectoryInfo
 
+        MessageBox.Show("Line 907")
+
         For Each Filename In Files
             Try
                 If CBool((Filename.Attributes And FileAttributes.ReadOnly)) Then
@@ -929,5 +963,6 @@ Err_Control:
         Doelmap = "c:\tmp"
         TextBox1DOELMAP.Text = "c:\tmp"
     End Sub
+
 
 End Class
