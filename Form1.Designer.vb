@@ -26,7 +26,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1DOELMAP = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -74,12 +74,12 @@ Partial Class Form1
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Versie 1 Release 8"
         '
-        'TextBox1DOELMAP
+        'TextBox1
         '
-        Me.TextBox1DOELMAP.Location = New System.Drawing.Point(6, 19)
-        Me.TextBox1DOELMAP.Name = "TextBox1DOELMAP"
-        Me.TextBox1DOELMAP.Size = New System.Drawing.Size(706, 20)
-        Me.TextBox1DOELMAP.TabIndex = 2
+        Me.TextBox1.Location = New System.Drawing.Point(6, 19)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(706, 20)
+        Me.TextBox1.TabIndex = 2
         '
         'Timer1
         '
@@ -87,7 +87,7 @@ Partial Class Form1
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TextBox1DOELMAP)
+        Me.GroupBox1.Controls.Add(Me.TextBox1)
         Me.GroupBox1.Location = New System.Drawing.Point(167, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(714, 56)
@@ -325,7 +325,7 @@ Partial Class Form1
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1DOELMAP As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
