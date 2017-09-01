@@ -1,7 +1,9 @@
 ﻿Imports System.IO
-Imports System
-Imports System.Drawing.Printing
 Imports Inventor
+
+'=======================
+'Alles in 1 Printer
+'=======================
 
 Public Class Form1
     Dim Doelmap As String = ""
@@ -491,7 +493,7 @@ Public Class Form1
     Private Function Get_drawing_nr(ByVal oDocument As Inventor.Document) As String
         'Dim VTKDWGNR As String
         Get_drawing_nr = oDocument.DisplayName
-        Dim propSets As Inventor.PropertySets = oDocument.PropertySets
+        Dim propSets As PropertySets = oDocument.PropertySets
 
         MessageBox.Show("Line 490")
 
@@ -649,16 +651,13 @@ Public Class Form1
                 PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR
                 ''    PDFCreator1.cOption("AutosaveFilename") = oDrgDoc.DisplayName
 
-
                 With PDFCreator1
                     .cOption("AutosaveDirectory") = "M:\Engineering\PDFprinterVTK\\SWAP lijst"
                     .cOption("AutosaveFilename") = oDrgDoc.DisplayName
                 End With
 
                 oDrgPrintMgr.SubmitPrint()
-
                 System.Threading.Thread.Sleep(1000)
-
                 numsheets = numsheets + 1
             Next
         Else
@@ -843,9 +842,7 @@ Err_Control:
             Exit Sub
 
         End Try
-
         ''   oTextBox.width = 10
-
         oLines(0) = oSketch.SketchLines.AddByTwoPoints(oTG.CreatePoint2d(breete, 7.9), oTG.CreatePoint2d(breete - 1.2, 7.9))
         oLines(1) = oSketch.SketchLines.AddByTwoPoints(oLines(0).EndSketchPoint, oTG.CreatePoint2d(breete - 1.2, 0.8))
         oSketch.ExitEdit()
@@ -854,9 +851,7 @@ Err_Control:
         oSketch.Name = WP_ASSY_BB
 
         Call Print_fysiek()
-
         'Toevoegen sheet 2 bestempelen
-
         'schets verwijderen
         oSketch.Delete()
     End Sub
@@ -959,6 +954,4 @@ Err_Control:
         Doelmap = "c:\tmp"
         TextBox1.Text = "c:\tmp"
     End Sub
-
-
 End Class
