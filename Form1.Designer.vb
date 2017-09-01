@@ -78,7 +78,7 @@ Partial Class Form1
         '
         Me.TextBox1.Location = New System.Drawing.Point(6, 19)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(706, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(706, 26)
         Me.TextBox1.TabIndex = 2
         '
         'Timer1
@@ -88,6 +88,7 @@ Partial Class Form1
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(167, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(714, 56)
@@ -156,21 +157,24 @@ Partial Class Form1
         'ListBox1
         '
         Me.ListBox1.AllowDrop = True
+        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(6, 12)
+        Me.ListBox1.ItemHeight = 20
+        Me.ListBox1.Location = New System.Drawing.Point(3, 20)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(702, 524)
+        Me.ListBox1.Size = New System.Drawing.Size(708, 524)
         Me.ListBox1.TabIndex = 5
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.ListBox1)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(167, 65)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(714, 547)
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Printlijst"
+        Me.GroupBox3.Text = "Sleep files in de PrintLijst"
         '
         'Button2
         '
@@ -286,7 +290,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(13, 413)
+        Me.Button3.Location = New System.Drawing.Point(12, 415)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(131, 23)
         Me.Button3.TabIndex = 10
