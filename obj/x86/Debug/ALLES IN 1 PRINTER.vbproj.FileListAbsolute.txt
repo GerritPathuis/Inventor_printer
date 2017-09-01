@@ -120,3 +120,5 @@ C:\Repositories\Inventor_printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.p
 C:\Repositories\Inventor_printer\Inventor_printer\bin\Debug\ALLES IN 1 PRINTER.xml
 C:\Repositories\Inventor_printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.exe.manifest
 C:\Repositories\Inventor_printer\Inventor_printer\obj\x86\Debug\ALLES IN 1 PRINTER.application
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\Interop.InventorApprentice.dll
+C:\Repos\Alles in 1 Printer\Inventor_printer\obj\x86\Debug\Interop.InventorUtilities.dll
