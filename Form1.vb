@@ -462,40 +462,37 @@ Public Class Form1
         End If
         MessageBox.Show("Line 455")
 
-        ''Set the destination file name
-        'oDataMedium.FileName = "c:\temp\dxfout.dxf"
+        'Set the destination file name
+        oDataMedium.FileName = "c:\temp\dxfout.dxf"
 
-        ' ''Dim VTKDWGNR As String
-        ' ''VTKDWGNR = oDocument.DisplayName
-        ' ''Dim propSets As Inventor.PropertySets = oDocument.PropertySets
-        ' ''For Each propSet As Inventor.PropertySet In propSets
-        ' ''    Debug.Print(propSet.DisplayName)
-        ' ''    For Each prop As Inventor.Property In propSet
-        ' ''        Debug.Print(vbTab & prop.Name)
-        ' ''        If prop.Name.Equals("VTKDWGNR", StringComparison.OrdinalIgnoreCase) Then
-        ' ''            VTKDWGNR = prop.Value
-        ' ''        End If
+        Dim VTKDWGNR As String
+        VTKDWGNR = oDocument.DisplayName
+        Dim propSets As Inventor.PropertySets = oDocument.PropertySets
+        For Each propSet As Inventor.PropertySet In propSets
+            Debug.Print(propSet.DisplayName)
+            For Each prop As Inventor.Property In propSet
+                Debug.Print(vbTab & prop.Name)
+                If prop.Name.Equals("VTKDWGNR", StringComparison.OrdinalIgnoreCase) Then
+                    VTKDWGNR = prop.Value
+                End If
 
-        ' ''    Next
-        ' ''Next
+            Next
+        Next
 
         'Set the destination file name
-        Dim VTKDWGNR As String = Get_drawing_nr(oDocument)
+        Dim VTKDWGNR2 As String = Get_drawing_nr(oDocument)
 
-        oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR + ".dwg"
-        ''oDataMedium.FileName = TextBox1.Text + "\dwg\" + VTKDWGNR + ".dwg" 
-        ''oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR + ".dwg"
+        oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR2 + ".dwg"
+        ''oDataMedium.FileName = TextBox1.Text + "\dwg\" + VTKDWGNR2 + ".dwg" 
+        ''oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR2 + ".dwg"
 
         'Publish document.
         Call DWGAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)
     End Sub
 
     Private Function Get_drawing_nr(ByVal oDocument As Inventor.Document) As String
-        'Dim VTKDWGNR As String
         Get_drawing_nr = oDocument.DisplayName
         Dim propSets As PropertySets = oDocument.PropertySets
-
-        MessageBox.Show("Line 490")
 
         For Each propSet As Inventor.PropertySet In propSets
             Debug.Print(propSet.DisplayName)
@@ -547,9 +544,9 @@ Public Class Form1
         ''Set the destination file name
         'oDataMedium.FileName = "c:\temp\dxfout.dxf"
 
-        Dim VTKDWGNR As String = Get_drawing_nr(oDocument)
+        Dim VTKDWGNR3 As String = Get_drawing_nr(oDocument)
 
-        oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR + ".dxf"
+        oDataMedium.FileName = TextBox1.Text + "\" + VTKDWGNR3 + ".dxf"
 
         Call DXFAddIn.SaveCopyAs(oDocument, oContext, oOptions, oDataMedium)
     End Sub
@@ -643,12 +640,10 @@ Public Class Form1
                 oDrgPrintMgr.AllColorsAsBlack = True
                 oDrgPrintMgr.Rotate90Degrees = True
 
-                Dim VTKDWGNR As String = Get_drawing_nr(CType(oDrgDoc, Inventor.Document))
-
-                MessageBox.Show("Line 647")
+                Dim VTKDWGNR4 As String = Get_drawing_nr(CType(oDrgDoc, Inventor.Document))
 
                 PDFCreator1.cOption("AutosaveDirectory") = TextBox1.Text
-                PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR
+                PDFCreator1.cOption("AutosaveFilename") = VTKDWGNR4
                 ''    PDFCreator1.cOption("AutosaveFilename") = oDrgDoc.DisplayName
 
                 With PDFCreator1
